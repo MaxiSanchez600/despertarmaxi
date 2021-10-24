@@ -13,11 +13,24 @@ app.use(function (req, res, next) {
   next();
 });
 app.post("/open", async function (req, res) {
-  console.log("ROCHO");
   const { name, message } = req.body;
   const response = await axios.post("http://181.12.248.55:8080/open", {
     name: name,
     message: message,
+  });
+  if (response.data) {
+    res.send("success");
+  } else {
+    res.status(400).send("error");
+  }
+});
+
+app.post("/youtube", async function (req, res) {
+  const { name, message, link } = req.body;
+  const response = await axios.post("http://181.12.248.55:8080/youtube", {
+    name: name,
+    message: message,
+    link: link,
   });
   if (response.data) {
     res.send("success");
