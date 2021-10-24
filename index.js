@@ -40,11 +40,11 @@ app.post("/youtube", async function (req, res) {
 });
 
 app.post("/spotify", async function (req, res) {
-  const { name, message, id } = req.body;
+  const { name, message, label } = req.body;
   const response = await axios.post("http://181.12.248.55:8080/spotify", {
     name: name,
     message: message,
-    id: id,
+    label: label,
   });
   if (response.data) {
     res.send("success");
